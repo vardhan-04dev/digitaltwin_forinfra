@@ -1,11 +1,11 @@
 *{
-  background: #1a1a1a;
+  background: white;
 }
 body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-.App {
+.App-container {
   width: 100%;
   height: 100%;
   display: flex;
@@ -14,7 +14,7 @@ body {
 
 h1, h2, h3 {
   margin: 0;
-  color:white;
+  color:black;
 }
 
 .main-container {
@@ -45,4 +45,37 @@ h1, h2, h3 {
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   margin-top: 20px;
+}
+.room-block {
+  background-color: #e8f0fe;
+  padding: 30px 10px;
+  text-align: center;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-weight: 600;
+  border: 2px solid transparent;
+}
+
+.room-block:hover {
+  transform: scale(1.05);
+  background-color: #d2e3fc;
+}
+
+
+.room-block.alert {
+  background-color: #ffe5e5;
+  border: 2px solid red;
+  animation: pulse 1.2s infinite;
+}
+.live-values {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+.live-values p {
+  margin: 5px 15px 5px 0;
 }

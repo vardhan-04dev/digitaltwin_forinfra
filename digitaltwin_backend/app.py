@@ -2,15 +2,11 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 import random
 
-from twin_engine.state import update_state
-from twin_engine.ml_model import load_model, predict_expected
-from twin_engine.reasoning import run_reasoning
+
 
 app = Flask(__name__)
 CORS(app)
 
-# load ML model once when server starts
-load_model("model.pkl")
 
 rooms = [
     {"id": 1, "name": "Room A", "floor": 1},
@@ -25,19 +21,12 @@ def get_rooms():
 
     for room in rooms:
 
-        # ---- fake live sensor data (replace with firebase later) ----
         live_data = {
             "temp": random.randint(25, 40),
+            "humidity": random.randint(30, 70),
             "power": random.randint(150, 350),
-            "crowd": random.randint(0, 1)   # PIR output
+            "crowd": random.randint(0, 1)   
         }
-
-        
-        state = update_state(room["id"], live_data)
-
-        expected = predict_expected(state)
-
-        risk, reasons, health = run_reasoning(state, expected)
 
         
         response.append({
@@ -45,10 +34,6 @@ def get_rooms():
             "name": room["name"],
             "floor": room["floor"],
             "live": live_data,
-            "expected": expected,
-            "risk": risk,
-            "reasons": reasons,
-            "health": health
         })
 
     return jsonify(response)

@@ -10,7 +10,7 @@ function App() {
   useEffect(() => {
     const fetchdata = async () => {
       try{
-        const res = await fetch("http://localhost:8080/api/rooms");
+        const res = await fetch("http://localhost:5000/api/rooms");
         const data = await res.json();
         setRooms(data);
       } catch (error) {
@@ -23,13 +23,12 @@ function App() {
   }, []);
     
   return (
-    <div className="App">
+    <div className="App-container">
       <div className="title">
         <h1>Digital Twin for Infrastructure</h1>
       </div>
       <div className="main-container">
         <div className="left-panel">
-          <h2>Select a room</h2>
           <RoomGrid rooms={rooms} onSelectRoom={setSelectedRoom} />
         </div>
         <div className="right-panel">
