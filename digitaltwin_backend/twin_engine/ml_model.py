@@ -5,7 +5,7 @@ model = None
 
 def load_model(path="model.pkl"):
     global model
-    model = joblib.load(path)
+    model = joblib.load("twin_engine/model.pkl")
 
 def predict_expected(state):
 
