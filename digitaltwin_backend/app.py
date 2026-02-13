@@ -9,9 +9,9 @@ CORS(app)
 
 
 rooms = [
-    {"id": 1, "name": "Room A", "floor": 1},
-    {"id": 2, "name": "Room B", "floor": 1},
-    {"id": 3, "name": "Room C", "floor": 2},
+    {"id": 1, "name": "Room A", "block": 1},
+    {"id": 2, "name": "Room B", "block": 1},
+    {"id": 3, "name": "Room C", "block": 2},
 ]
 
 @app.route("/api/rooms")
@@ -32,7 +32,7 @@ def get_rooms():
         response.append({
             "id": room["id"],
             "name": room["name"],
-            "floor": room["floor"],
+            "block": room["block"],
             "live": live_data,
         })
 
